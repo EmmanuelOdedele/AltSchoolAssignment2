@@ -1,0 +1,53 @@
+.contact-page {
+  box-sizing: border-box;
+}
+
+.container1 {
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  margin: 60px auto;
+  max-width: 400px;
+  height: 100%;
+  padding: 40px 60px;
+  background-color: cadetblue;
+}
+
+.container1 h1 {
+  margin: 0;
+}
+
+.form-container{
+    margin-top: 15px;
+    width: 100%;
+}
+
+.field {
+  display: flex;
+margin-bottom: 10px;
+  flex-direction: column;
+}
+
+.field input {
+    margin-top: 3px;
+}
+
+#textarea{
+    box-sizing: border-box;
+    margin-top: 3px;
+    height: 100px;
+    min-height: 70px;
+    min-width: 100%;
+    max-width: 100%;
+}
+
+#btn{
+    width: 100%;
+    border-radius: 50px;
+    border: none;
+    height: 25px;
+    background-color: #fff;
+    margin-top: 20px;
+}
