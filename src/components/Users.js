@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Navigation from "./Navigation";
+import UserRecord from "./UserRecord";
+import Pagination from "./Pagination";
 
 function Users() {
   const [data, setData] = useState([]);
@@ -22,42 +24,29 @@ function Users() {
     fetchData();
   }, []);
 
-  // let page = 1;
-  // const PER_PAGE = 10;
-  // const total = data?.result?.legth;
-  // const pages = Math.ceil(total / PER_PAGE);
-  // const skip = page * PER_PAGE - PER_PAGE;
+  const [currentPage, setCurrentPage] = useState(1);
+  const [recordsPerPage] = useState(10);
 
-  // console.log(data);
+  const indexOfLastRecord = currentPage * recordsPerPage;
+  const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
+  const currentRecords = data.slice(indexOfFirstRecord, indexOfLastRecord);
+  const nPages = Math.ceil(data.length / recordsPerPage);
 
   return (
     <section>
       <Navigation />
-
-      {/* <ol>
-        {data.slice(skip, skip + PER_PAGE).map((user, index) => {
-          const name = `${user.name.title} ${user.name.first} ${user.name.last}`;
-          return (
-            <li key={name.toLowerCase().replaceAll(" ", "")}>
-              {`${index + 1}, ${name}`}
-            </li>
-          );
-        })}
-      </ol> */}
-
       <h1>Users</h1>
       {hasError && <p>Something went wrong.</p>}
       {isLoading ? (
         <p>Loading...</p>
       ) : (
-        <ol>
-          {data.map((user, index) => (
-            <li key={index}>
-              {user.name.title} {user.name.first} {user.name.last}
-            </li>
-          ))}
-        </ol>
+        <UserRecord data={currentRecords}/>
       )}
+      <Pagination
+        nPages={nPages}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+      />
     </section>
   );
 }
@@ -79,4 +68,3 @@ export default Users;
 //       <h1>Users</h1>
 //     </section>
 //   );
-

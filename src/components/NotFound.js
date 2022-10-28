@@ -1,9 +1,10 @@
 import React from "react";
 import Navigation from "./Navigation";
+import "../styles/notfound.css"
 
 function NotFound() {
   return (
-    <section>
+    <section className="notfound">
       <h1>
         Oops! You seem to be lost.
         <br />
