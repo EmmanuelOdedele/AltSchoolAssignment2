@@ -12,11 +12,9 @@ function Pagination({ nPages, currentPage, setCurrentPage }) {
   return (
     <nav>
       <button onClick={prevPage}>Previous</button>
-
       {pageNumbers.map((pgNumber) => (
         <button onClick={() => setCurrentPage(pgNumber)}>{pgNumber}</button>
       ))}
-
       <button onClick={nextPage}>Next</button>
     </nav>
   );
